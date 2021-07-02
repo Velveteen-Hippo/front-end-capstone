@@ -9,14 +9,9 @@ if (process.env.NODE_ENV !== 'production' && process.env.NODE_ENV !== 'testing')
   require('dotenv').config();
 }
 
-const { GITHUB_API_KEY } = process.env;
-
 router.get('/revs', (req, res) => {
   axios
-    .get('https://app-hrsei-api.herokuapp.com/api/fec2/hr-bld/reviews', {
-      headers: {
-        Authorization: GITHUB_API_KEY
-      },
+    .get('http://18.223.238.72/reviews/', {
       params: {
         product_id: req.query.product_id,
         count: req.query.count,
@@ -35,7 +30,7 @@ router.get('/revs', (req, res) => {
 });
 
 router.post('/revs', (req, res) => {
-  axios.post('https://app-hrsei-api.herokuapp.com/api/fec2/hr-bld/reviews', {
+  axios.post('http://18.223.238.72/reviews/', {
     product_id: req.body.product_id,
     rating: req.body.rating,
     summary: req.body.summary,
@@ -45,11 +40,6 @@ router.post('/revs', (req, res) => {
     email: req.body.email,
     photos: req.body.photos,
     characteristics: req.body.characteristics
-  }, {
-    headers: {
-      Authorization: GITHUB_API_KEY,
-      'Content-Type': 'application/json'
-    }
   })
     .then((response) => {
       res.status(201);
@@ -65,10 +55,7 @@ router.post('/revs', (req, res) => {
 
 router.get('/meta', (req, res) => {
   axios
-    .get('https://app-hrsei-api.herokuapp.com/api/fec2/hr-bld/reviews/meta', {
-      headers: {
-        Authorization: GITHUB_API_KEY
-      },
+    .get('http://18.223.238.72/reviews/meta', {
       params: {
         product_id: req.query.product_id
       }
@@ -84,11 +71,7 @@ router.get('/meta', (req, res) => {
 });
 
 router.put('/revs/helpful', (req, res) => {
-  axios.put(`https://app-hrsei-api.herokuapp.com/api/fec2/hr-bld/reviews/${req.query.review_id}/helpful`, {}, {
-    headers: {
-      Authorization: GITHUB_API_KEY
-    }
-  })
+  axios.put(`http://18.223.238.72/reviews/${req.query.review_id}/helpful`, {})
     .then(() => {
       res.status(204);
       res.send();
@@ -100,11 +83,7 @@ router.put('/revs/helpful', (req, res) => {
 });
 
 router.put('/report', (req, res) => {
-  axios.put(`https://app-hrsei-api.herokuapp.com/api/fec2/hr-bld/reviews/${req.query.review_id}/report`, {}, {
-    headers: {
-      Authorization: GITHUB_API_KEY
-    }
-  })
+  axios.put(`http://18.223.238.72/reviews/${req.query.review_id}/report`, {})
     .then(() => {
       res.status(204);
       res.send();
