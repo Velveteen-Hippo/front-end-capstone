@@ -29,7 +29,7 @@ const ReviewPercentageAndStars = () => {
 
   const getAvgRating = () => {
     if (Object.keys(revsMetaData).length !== 0) {
-      if (Object.keys(revsMetaData.ratings).length !== 0) {
+      if (revsMetaData.ratings !== null && revsMetaData.ratings !== undefined && Object.keys(revsMetaData.ratings).length !== 0) {
         const ratingsObject = revsMetaData.ratings;
         setAvgRating(calcAvgRating(ratingsObject));
       }

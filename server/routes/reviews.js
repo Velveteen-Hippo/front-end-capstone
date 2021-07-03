@@ -9,8 +9,8 @@ if (process.env.NODE_ENV !== 'production' && process.env.NODE_ENV !== 'testing')
   require('dotenv').config();
 }
 
-// var baseUrl = 'http://18.223.238.72/reviews/';
-var baseUrl = 'http://localhost:3001/reviews'
+var baseUrl = 'http://18.223.238.72/reviews';
+// var baseUrl = 'http://localhost:3001/reviews'
 
 router.get('/revs', (req, res) => {
   axios
@@ -52,7 +52,7 @@ router.post('/revs', (req, res) => {
     .catch((err) => {
       console.log('Post failed');
       console.log(err);
-      //res.send();
+      // res.send(err);
     });
 });
 
