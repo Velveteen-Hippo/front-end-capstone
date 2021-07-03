@@ -87,7 +87,7 @@ const RatingsAndReviews = () => {
   }, [product]);
 
   useEffect(() => {
-    if (pageState !== null) {
+    if (pageState !== null && product.id > 0) {
       getAllReviews(product.id);
     }
   }, [pageState]);

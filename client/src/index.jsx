@@ -48,9 +48,9 @@ function App() {
     <AppContext.Provider value={{ product, revsMetaData }}>
       <Container maxWidth="lg">
         <Banner />
-        <ProductDisplay />
+        {/* <ProductDisplay /> */}
         <Container maxWidth="md" style={{ backgroundColor: '#f9f4f3', boxShadow: '0 4px 8px 0 rgb(0 0 0 / 5%), 0 6px 5px 0 rgb(0 0 0 / 4%)' }}>
-          <QuestionsAndAnswers />
+          {/* <QuestionsAndAnswers /> */}
           <RatingsAndReviews />
         </Container>
       </Container>

@@ -26,7 +26,9 @@ const MetaData = () => {
   };
 
   useEffect(() => {
-    getAllRevsMetaData(product.id);
+    if (!!product && !!product.id && product.id > -1) {
+      getAllRevsMetaData(product.id);
+    }
   }, [product]);
 
   return (

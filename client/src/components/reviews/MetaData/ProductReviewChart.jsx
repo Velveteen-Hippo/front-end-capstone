@@ -96,7 +96,6 @@ function valuetext(value) {
 const ProductReviewChart = () => {
   const { revsMetaData } = useContext(ReviewsContext);
   const [charValPairs, setCharValPairs] = useState([]);
-
   const getChar = () => {
     const resultArr = [];
     const charKeys = Object.keys(revsMetaData.characteristics);

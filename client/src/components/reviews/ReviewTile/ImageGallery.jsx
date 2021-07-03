@@ -31,7 +31,11 @@ const ImageGallery = (props) => {
   const [photosArr, setPhotosArr] = useState([]);
 
   const createImageGallery = () => {
-    setPhotosArr(props.revPhotos);
+    if (props.revPhotos !== null) {
+      setPhotosArr(props.revPhotos);
+    } else {
+      setPhotosArr([]);
+    }
   };
   useEffect(() => {
     createImageGallery();

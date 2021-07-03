@@ -9,9 +9,12 @@ if (process.env.NODE_ENV !== 'production' && process.env.NODE_ENV !== 'testing')
   require('dotenv').config();
 }
 
+// var baseUrl = 'http://18.223.238.72/reviews/';
+var baseUrl = 'http://localhost:3001/reviews'
+
 router.get('/revs', (req, res) => {
   axios
-    .get('http://18.223.238.72/reviews/', {
+    .get(baseUrl, {
       params: {
         product_id: req.query.product_id,
         count: req.query.count,
@@ -30,7 +33,7 @@ router.get('/revs', (req, res) => {
 });
 
 router.post('/revs', (req, res) => {
-  axios.post('http://18.223.238.72/reviews/', {
+  axios.post(baseUrl, {
     product_id: req.body.product_id,
     rating: req.body.rating,
     summary: req.body.summary,
@@ -55,7 +58,7 @@ router.post('/revs', (req, res) => {
 
 router.get('/meta', (req, res) => {
   axios
-    .get('http://18.223.238.72/reviews/meta', {
+    .get(baseUrl + '/meta', {
       params: {
         product_id: req.query.product_id
       }
@@ -71,7 +74,7 @@ router.get('/meta', (req, res) => {
 });
 
 router.put('/revs/helpful', (req, res) => {
-  axios.put(`http://18.223.238.72/reviews/${req.query.review_id}/helpful`, {})
+  axios.put(baseUrl + `${req.query.review_id}/helpful`, {})
     .then(() => {
       res.status(204);
       res.send();
@@ -83,7 +86,7 @@ router.put('/revs/helpful', (req, res) => {
 });
 
 router.put('/report', (req, res) => {
-  axios.put(`http://18.223.238.72/reviews/${req.query.review_id}/report`, {})
+  axios.put(baseUrl + `${req.query.review_id}/report`, {})
     .then(() => {
       res.status(204);
       res.send();
