@@ -6,17 +6,23 @@ if (process.env.NODE_ENV !== 'production' && process.env.NODE_ENV !== 'testing')
   require('dotenv').config();
 }
 
-const { GITHUB_API_KEY } = process.env;
+// const { GITHUB_API_KEY } = process.env;
+
+// , {
+//   headers: {
+//     Authorization: GITHUB_API_KEY
+//   }
+// }
 
 const router = express.Router();
-const url = 'https://app-hrsei-api.herokuapp.com/api/fec2/hr-bld';
+const url = 'http://18.117.186.33';
 
 // Get request for a question with a default page of 1
 router.get('/questions', (req, res) => {
   axios.get(`${url}/qa/questions`, {
-    headers: {
-      Authorization: GITHUB_API_KEY
-    },
+    // headers: {
+    //   Authorization: GITHUB_API_KEY
+    // },
     params: {
       product_id: req.query.product_id,
       page: req.query.page || 1,
@@ -29,7 +35,7 @@ router.get('/questions', (req, res) => {
     })
     .catch((err) => {
       // eslint-disable-next-line no-console
-      console.log(err);
+      console.log('get questions err', err);
       res.send();
     });
 });
@@ -42,33 +48,29 @@ router.post('/questions', (req, res) => {
     email: req.body.email,
     product_id: req.body.product_id
   }, {
-    headers: {
-      Authorization: GITHUB_API_KEY
-    }
+    // headers: {
+    //   Authorization: GITHUB_API_KEY
+    // }
   })
     .then((response) => {
       res.status(201).send(response.data);
     })
     .catch((err) => {
       // eslint-disable-next-line no-console
-      console.log(err);
+      console.log('post question err', err);
       res.send();
     });
 });
 
 // Update the helpfulness of a question
 router.put('/questions/helpful', (req, res) => {
-  axios.put(`${url}/qa/questions/${req.query.question_id}/helpful`, {}, {
-    headers: {
-      Authorization: GITHUB_API_KEY
-    }
-  })
+  axios.put(`${url}/qa/questions/${req.query.question_id}/helpful`, {})
     .then(() => {
       res.status(204).send();
     })
     .catch((err) => {
       // eslint-disable-next-line no-console
-      console.log(err);
+      console.log('put questions helpful err', err);
       res.send();
     });
 });
@@ -76,16 +78,16 @@ router.put('/questions/helpful', (req, res) => {
 // Report a question
 router.put('/questions/report', (req, res) => {
   axios.put(`${url}/qa/questions/${req.query.question_id}/report`, {}, {
-    headers: {
-      Authorization: GITHUB_API_KEY
-    }
+    // headers: {
+    //   Authorization: GITHUB_API_KEY
+    // }
   })
     .then(() => {
       res.status(204).send();
     })
     .catch((err) => {
       // eslint-disable-next-line no-console
-      console.log(err);
+      console.log('report question err', err);
       res.send();
     });
 });
@@ -93,9 +95,9 @@ router.put('/questions/report', (req, res) => {
 // Get answers to a question
 router.get('/answers', (req, res) => {
   axios.get(`${url}/qa/questions/${req.query.question_id}/answers`, {
-    headers: {
-      Authorization: GITHUB_API_KEY
-    },
+    // headers: {
+    //   Authorization: GITHUB_API_KEY
+    // },
     params: {
       page: req.query.page || 1
     }
@@ -106,7 +108,7 @@ router.get('/answers', (req, res) => {
     })
     .catch((err) => {
       // eslint-disable-next-line no-console
-      console.log(err);
+      console.log('get answers err', err);
       res.send();
     });
 });
@@ -119,16 +121,16 @@ router.post('/answers', (req, res) => {
     email: req.body.email,
     photos: req.body.photos
   }, {
-    headers: {
-      Authorization: GITHUB_API_KEY
-    }
+    // headers: {
+    //   Authorization: GITHUB_API_KEY
+    // }
   })
     .then((response) => {
       res.status(201).send(response.data);
     })
     .catch((err) => {
       // eslint-disable-next-line no-console
-      console.log(err);
+      console.log('post answer err', err);
       res.send();
     });
 });
@@ -136,16 +138,16 @@ router.post('/answers', (req, res) => {
 // Update the helpfulness of an answer
 router.put('/answers/helpful', (req, res) => {
   axios.put(`${url}/qa/answers/${req.query.answer_id}/helpful`, {}, {
-    headers: {
-      Authorization: GITHUB_API_KEY
-    }
+    // headers: {
+    //   Authorization: GITHUB_API_KEY
+    // }
   })
     .then(() => {
       res.status(204).send();
     })
     .catch((err) => {
       // eslint-disable-next-line no-console
-      console.log(err);
+      console.log('put answer helpful err', err);
       res.send();
     });
 });
@@ -153,16 +155,16 @@ router.put('/answers/helpful', (req, res) => {
 // Report an answer
 router.put('/answers/report', (req, res) => {
   axios.put(`${url}/qa/answers/${req.query.answer_id}/report`, {}, {
-    headers: {
-      Authorization: GITHUB_API_KEY
-    }
+    // headers: {
+    //   Authorization: GITHUB_API_KEY
+    // }
   })
     .then(() => {
       res.status(204).send();
     })
     .catch((err) => {
       // eslint-disable-next-line no-console
-      console.log(err);
+      console.log('report answer err', err);
       res.send();
     });
 });
