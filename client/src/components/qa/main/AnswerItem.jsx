@@ -40,7 +40,7 @@ export default function AnswerItem({ answer }) {
       <Typography className={classes.answerBody}>{answer.body}</Typography>
 
       <Grid container>
-        {answer.photos.map((photo) => <ImageModal key={photo.id} url={photo.url} />)}
+        {answer.photos.map((photo) => <ImageModal key={photo} url={photo} />)}
       </Grid>
 
       <Grid container direction="row" alignItems="baseline" className={classes.answerInfo}>
@@ -94,9 +94,9 @@ AnswerItem.propTypes = {
     helpfulness: PropTypes.number,
     answerer_name: PropTypes.string,
     date: PropTypes.string,
-    photos: PropTypes.arrayOf(PropTypes.shape({
-      url: PropTypes.string
-    }))
+    // photos: PropTypes.arrayOf(PropTypes.shape({
+    //   url: PropTypes.string
+    // }))
   })
 };
 
