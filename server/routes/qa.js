@@ -35,7 +35,7 @@ router.get('/questions', (req, res) => {
     })
     .catch((err) => {
       // eslint-disable-next-line no-console
-      console.log(err);
+      console.log('get questions err', err);
       res.send();
     });
 });
@@ -57,7 +57,7 @@ router.post('/questions', (req, res) => {
     })
     .catch((err) => {
       // eslint-disable-next-line no-console
-      console.log(err);
+      console.log('post question err', err);
       res.send();
     });
 });
@@ -70,7 +70,7 @@ router.put('/questions/helpful', (req, res) => {
     })
     .catch((err) => {
       // eslint-disable-next-line no-console
-      console.log(err);
+      console.log('put questions helpful err', err);
       res.send();
     });
 });
@@ -87,7 +87,7 @@ router.put('/questions/report', (req, res) => {
     })
     .catch((err) => {
       // eslint-disable-next-line no-console
-      console.log(err);
+      console.log('report question err', err);
       res.send();
     });
 });
@@ -108,7 +108,7 @@ router.get('/answers', (req, res) => {
     })
     .catch((err) => {
       // eslint-disable-next-line no-console
-      console.log(err);
+      console.log('get answers err', err);
       res.send();
     });
 });
@@ -130,7 +130,7 @@ router.post('/answers', (req, res) => {
     })
     .catch((err) => {
       // eslint-disable-next-line no-console
-      console.log(err);
+      console.log('post answer err', err);
       res.send();
     });
 });
@@ -147,7 +147,7 @@ router.put('/answers/helpful', (req, res) => {
     })
     .catch((err) => {
       // eslint-disable-next-line no-console
-      console.log(err);
+      console.log('put answer helpful err', err);
       res.send();
     });
 });
@@ -164,7 +164,7 @@ router.put('/answers/report', (req, res) => {
     })
     .catch((err) => {
       // eslint-disable-next-line no-console
-      console.log(err);
+      console.log('report answer err', err);
       res.send();
     });
 });

@@ -94,9 +94,9 @@ AnswerItem.propTypes = {
     helpfulness: PropTypes.number,
     answerer_name: PropTypes.string,
     date: PropTypes.string,
-    photos: PropTypes.arrayOf(PropTypes.shape({
-      url: PropTypes.string
-    }))
+    // photos: PropTypes.arrayOf(PropTypes.shape({
+    //   url: PropTypes.string
+    // }))
   })
 };
 
